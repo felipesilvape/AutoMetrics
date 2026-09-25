@@ -46,9 +46,11 @@ O modelo foi concebido no **brModelo**, respeitando as formas normais e a integr
 
 ---
 
-💼 4. Regras de Negócio e Decisões de Modelagem
-Regra / Decisão	Justificativa de Engenharia
-Vínculo Motorista ↔ Telemetria	Os motoristas alternam entre diferentes veículos da frota. O vínculo ocorre no momento da leitura/viagem, e não fixo no cadastro do veículo.
-Histórico de Odômetro na Manutenção	Armazenar o odometro_na_manut permite calcular com precisão a quilometragem decorrida até a próxima intervenção preventiva.
-Custos como Entidade Independente	Despesas não são atributos estáticos do veículo; cada manutenção é um registro histórico auditável com valor, peças e descrição do serviço.
-Cálculo Dinâmico de Custo por KM	Não armazenado como coluna para evitar inconsistências. É gerado sob demanda via queries analíticas: SUM(valor) / quilometragem.
+## 💼 4. Regras de Negócio e Decisões de Modelagem
+
+| Regra / Decisão | Justificativa de Engenharia |
+| :--- | :--- |
+| **Vínculo Motorista ↔ Telemetria** | Os motoristas alternam entre diferentes veículos da frota. O vínculo ocorre no momento da leitura/viagem, e não fixo no cadastro do veículo. |
+| **Histórico de Odômetro na Manutenção** | Armazenar o `odometro_na_manut` permite calcular com precisão a quilometragem decorrida até a próxima intervenção preventiva. |
+| **Custos como Entidade Independente** | Despesas não são atributos estáticos do veículo; cada manutenção é um registro histórico auditável com valor, peças e descrição do serviço. |
+| **Cálculo Dinâmico de Custo por KM** | Não armazenado como coluna para evitar inconsistências. É gerado sob demanda via queries analíticas: `SUM(valor) / quilometragem`. |
